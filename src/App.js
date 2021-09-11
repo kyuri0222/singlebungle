@@ -1,45 +1,49 @@
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-import LandingPage from './components/views/LandingPage/LandingPage';
-import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import Login from "./components/login/login";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Main from "./components/main/main";
+import React, { useState } from "react";
+import BoardEditor from "./components/board_editor/boardEditor";
+import Board from "./components/board/board";
+import Board2 from "./components/board2/board2";
+import Welcome from "./components/welcome/welcome";
+import Signup from "./components/signup/signup";
 
 function App() {
   return (
-    <Router>
-      <div>
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
-        <Switch>
-          <Route exact path="/" component={LandingPage}/>
-          <Route exact path="/login" component={LoginPage}/>
-          <Route exact path="/register" component={RegisterPage} />
+    <BrowserRouter>
+      <Switch>        
+        
+        <Route path="/" exact={true} component={Welcome}/>
+        <Route path="/signup" component={Signup}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/main" component={Main}/>
+        <Route path="/board" component={Board}/>
+        <Route path="/board/new" component={BoardEditor}/>
 
-          {/* 아래처럼 써도돼. 그리고 주석 단축키는 command+/ */}
-          {/* <Route exact path="/">
-          <LandingPage />
-          </Route>
-          <Route path="/login">
-          <LoginPage />
-          </Route>
-          <Route path="/register">
-          <RegisterPage />
-          </Route> */}
+        <Route path="/board2" component={Board2}/>
 
-        </Switch>
-      </div>
-    </Router>
+
+        {/* <Route exact path="/">
+          <Welcome></Welcome>
+        </Route>
+        <Route path="/signup">
+          <Signup></Signup>
+        </Route>
+        <Route path="/login">
+          <Login></Login>
+        </Route>
+        <Route path="/main">
+          <Main></Main>
+        </Route>
+        <Route exact path="/board">
+          <Board></Board>
+        </Route>
+        <Route path="/board/new">
+          <BoardEditor></BoardEditor>
+        </Route> */}
+
+      </Switch>
+    </BrowserRouter>
   );
 }
 
