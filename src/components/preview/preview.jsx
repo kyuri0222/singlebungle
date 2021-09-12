@@ -1,14 +1,15 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
+import PreviewBoard from "../preview_board/previewBoard";
 import { boardState } from "../state/boardState";
 const Preview = () => {
-  const card = useRecoilValue(boardState);
+  const board = useRecoilValue(boardState);
   return (
-    <ul>
-      <h1>{card.id}</h1>
-      <span>{card.time}</span>
-      <p>{card.title}</p>
-    </ul>
+    <section>
+      {board.map((item) => (
+        <PreviewBoard key={item.id} board={item} />
+      ))}
+    </section>
   );
 };
 

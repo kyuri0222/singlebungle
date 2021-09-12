@@ -1,4 +1,20 @@
 import React from "react";
+import { useParams } from "react-router";
+import { useRecoilValue } from "recoil";
+import ShowDetail from "../showDetail/showDetail";
+import { boardIdState, boardState } from "../state/boardState";
 
-const BoardDetail = () => <h1>유철님 감옥가주세요 부탁이에요</h1>;
+const BoardDetail = () => {
+  const params = useParams();
+  const board = useRecoilValue(boardState);
+  return (
+    <section>
+      {board.map((item) => {
+        if (item.id == params.detail_id) {
+          return <ShowDetail item={item}></ShowDetail>;
+        }
+      })}
+    </section>
+  );
+};
 export default BoardDetail;
